@@ -192,8 +192,7 @@ class SACTrainer(TorchTrainer):
                 )
             )
             self.eval_statistics["Alpha"] = alpha.item()
-            if self.use_automatic_entropy_tuning:
-                self.eval_statistics["Alpha Loss"] = alpha_loss.item()
+            self.eval_statistics["Alpha Loss"] = alpha_loss.item() if self.use_automatic_entropy_tuning else np.nan
         self._n_train_steps_total += 1
 
     def get_diagnostics(self):
